@@ -78,18 +78,19 @@ public class CitiesChooseAdapter extends RecyclerView.Adapter<CitiesChooseAdapte
 
     @Override
     public void onBindViewHolder(final CitiesChooseAdapter.ViewHolder holder, final int position) {
+        setColorForCardView(holder, position);
         holder.nameCity_CitiesItem.setText(workList.get(position).getName());
         fillTextViewItems(holder, position);
         setVisibleHumidityAndWind(holder);
     }
 
-    /*private void setColorForCardView(ViewHolder holder, int position) {
-        if (workList.get(position).getIsSelect() == 1) {
+    private void setColorForCardView(ViewHolder holder, int position) {
+        if(position==0){
             holder.card_view.setCardBackgroundColor(holder.card_view.getContext().getResources().getColor(R.color.yellow));
-        } else {
+        }else{
             holder.card_view.setCardBackgroundColor(holder.card_view.getContext().getResources().getColor(R.color.invisible_color));
         }
-    }*/
+    }
 
     private void setVisibleHumidityAndWind(ViewHolder holder) {
         if (isCheckedInfo) {

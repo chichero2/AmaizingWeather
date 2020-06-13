@@ -135,6 +135,9 @@ public class MainFragment extends Fragment implements Constants, SomeDaysAdapter
                             if (currentCity != null) {
                                 currentCity.setDailyForecast();
                                 initRecycler();
+                                if (requireActivity().getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
+                                    rvSomeDays_MainFragment.addItemDecoration(new SpacesItemDecoration(-6, 0));
+                                }
                                 showCityFromServer();
                                 createConstraintsForLayout();
                                 updateViewsAfterUpdateDB();
@@ -325,9 +328,7 @@ public class MainFragment extends Fragment implements Constants, SomeDaysAdapter
     private void initRecycler() {
         if (currentCity.getDailyForecast() != null) {
             rvSomeDays_MainFragment.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-            if (requireActivity().getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
-                rvSomeDays_MainFragment.addItemDecoration(new SpacesItemDecoration(-6, 0));
-            }
+
             someDaysAdapter = new SomeDaysAdapter((ArrayList<WeatherRequest>) currentCity.getDailyForecast());
             someDaysAdapter.setOnItemClickListener(this);
             rvSomeDays_MainFragment.setAdapter(someDaysAdapter);
@@ -348,10 +349,6 @@ public class MainFragment extends Fragment implements Constants, SomeDaysAdapter
         oldClickPosition = pos;
         fillActivityViews(currentCity, pos);
         loadPicasso(pos);
-        weatherRequestRepositoryRoom.insert(new WeatherRequestRoom(514734,222,222,222,222,"222",1592071816000L))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
     }
 
     @Override

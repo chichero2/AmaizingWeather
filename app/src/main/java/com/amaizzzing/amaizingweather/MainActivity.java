@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void createCurrentCity() {
-        navView.setSelectedItemId(R.id.bottom_nav_weather);
         compositeDisposable.add(repo.getLastHistoryCity()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -262,6 +261,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .addToBackStack(MAIN_FRAGMENT)
                     .commit();
         } else {
+            if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
+                pbNetworkLoad.setVisibility(View.GONE);
+                navView.setSelectedItemId(R.id.bottom_nav_weather);
+            }
             switchFragments(FragmentTypes.MAIN_FRAGMENT, MAIN_FRAGMENT);
         }
     }
@@ -391,9 +394,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void prepareMainScreenAfterLoadFromServer() {
-        if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
-            pbNetworkLoad.setVisibility(View.GONE);
-        }
         compositeDisposable.add(repo.getCityByName(currentCity.getName())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

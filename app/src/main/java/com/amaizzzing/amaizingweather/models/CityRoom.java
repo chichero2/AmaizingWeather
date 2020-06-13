@@ -67,20 +67,30 @@ public class CityRoom {
 
     private ArrayList<WeatherRequest> getForecastDays(ArrayList<WeatherRequest> hourlyForecast) {
         if (hourlyForecast.size() != 0) {
+            int countDay=0;
             ArrayList<WeatherRequest> dailyForecast = new ArrayList<>();
             hourlyForecast.get(0).setChecked(true);
             dailyForecast.add(hourlyForecast.get(0));
             Calendar dailyCalendar = Calendar.getInstance();
             dailyCalendar.setTime(new Date(hourlyForecast.get(0).getDt()));
             int day = dailyCalendar.get(Calendar.DAY_OF_MONTH);
+            float maxTempForDay=-999;
             for (WeatherRequest wf : hourlyForecast) {
                 dailyCalendar = Calendar.getInstance();
                 dailyCalendar.setTime(new Date(wf.getDt()));
+                if(wf.getMain().getTemp()>maxTempForDay){
+                    maxTempForDay=wf.getMain().getTemp();
+                }
                 if (day != dailyCalendar.get(Calendar.DAY_OF_MONTH)) {
+                    dailyForecast.get(countDay++).getMain().setTemp(maxTempForDay);
+                    maxTempForDay=-999;
                     wf.setStrategyWeather(wf.getWeather()[0].getMain());
                     dailyForecast.add(wf);
                 }
                 day = dailyCalendar.get(Calendar.DAY_OF_MONTH);
+            }
+            if(maxTempForDay!=-999) {
+                dailyForecast.get(countDay).getMain().setTemp(maxTempForDay);
             }
             return dailyForecast;
         }
