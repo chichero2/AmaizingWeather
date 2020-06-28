@@ -7,7 +7,7 @@ import com.amaizzzing.amaizingweather.models.Sys;
 import com.amaizzzing.amaizingweather.models.Weather;
 import com.amaizzzing.amaizingweather.models.Wind;
 
-public class WeatherRequest {
+public class WeatherRequest implements Cloneable{
     private Coord coord;
     private Weather[] weather;
     private Main main;
@@ -106,5 +106,12 @@ public class WeatherRequest {
 
     public void setChecked(boolean checked) {
         isChecked = checked;
+    }
+
+    public WeatherRequest clone() throws CloneNotSupportedException{
+        WeatherRequest weatherRequest=(WeatherRequest) super.clone();
+        Main main=this.getMain().clone();
+        weatherRequest.setMain(main);
+        return weatherRequest;
     }
 }

@@ -1,9 +1,10 @@
 package com.amaizzzing.amaizingweather.models;
 
+import com.amaizzzing.amaizingweather.WeatherRequest;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Main {
+public class Main implements Cloneable{
     @SerializedName("temp")
     @Expose
     private float temp;
@@ -47,6 +48,11 @@ public class Main {
 
     public void setFeels_like(float feels_like) {
         this.feels_like = feels_like;
+    }
+
+    public Main clone() throws CloneNotSupportedException{
+
+        return (Main) super.clone();
     }
 }
 
