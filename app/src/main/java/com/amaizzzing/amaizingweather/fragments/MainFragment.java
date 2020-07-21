@@ -51,6 +51,8 @@ import com.amaizzzing.amaizingweather.repository.ContextCity;
 import com.amaizzzing.amaizingweather.repository.HistoryChooseCitiesRepository;
 import com.amaizzzing.amaizingweather.repository.Repository;
 import com.amaizzzing.amaizingweather.repository.WeatherRequestRepositoryRoom;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.maps.model.LatLng;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -106,6 +108,11 @@ public class MainFragment extends Fragment implements Constants, SomeDaysAdapter
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
+
+        AdView mainAdView = v.findViewById(R.id.mainAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mainAdView.loadAd(adRequest);
+
 
         initViews(v);
         initListeners();

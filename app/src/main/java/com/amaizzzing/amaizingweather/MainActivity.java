@@ -44,8 +44,12 @@ import com.amaizzzing.amaizingweather.repository.ContextCity;
 import com.amaizzzing.amaizingweather.repository.HistoryChooseCitiesRepository;
 import com.amaizzzing.amaizingweather.repository.Repository;
 import com.amaizzzing.amaizingweather.repository.WeatherRequestRepositoryRoom;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
@@ -66,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final String CHANNEL_ID = "2";
     private static final String CHANNEL_NAME = "name";
     private static final int PERMISSION_REQUEST_CODE = 10;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private BottomNavigationView navView;
     private ProgressBar pbNetworkLoad;
@@ -89,6 +95,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         setupTheme();
         super.onCreate(savedInstanceState);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         initVariables();
         initNotificationChannel();

@@ -21,6 +21,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1258070941948820~3553167472"/>
+
 
         <service android:name=".services.MyFirebaseMessagingService">
             <intent-filter>
