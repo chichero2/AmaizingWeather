@@ -56,11 +56,9 @@
     <string name="maps">Карты</string>
     <string name="openweathermap_org">Прогноз погоды предоставлен: openweathermap.org</string>
     <string name="politics_text">Политика конфиденциальности</string>
-
-    <string-array name="cities">
-        <item>Москва</item>
-        <item>Санкт-Петербург</item>
-        <item>Екатеринбург</item>
-        <item>Нижний Новгород</item>
-    </string-array>
+    <string name="title_weather">Weather</string>
+    <string name="title_map">Map</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="not_result">Нет результатов!</string>
+    <string name="title_weather_update">Погода обновлена</string>
 </resources>
