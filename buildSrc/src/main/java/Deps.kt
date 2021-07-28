@@ -38,6 +38,14 @@ private const val daggerVersion = "2.24"
 //glide
 private const val glideVersion = "4.12.0"
 
+//firebase
+private const val firebaseFuncs = "20.0.0"
+private const val firebaseMsg = "22.0.0"
+
+//googlePlay
+private const val playAds = "20.2.0"
+private const val googleSrvcs = "4.3.8"
+
 object Dependencies{
     object Android {
         val minSdkVersion = 21
@@ -55,6 +63,7 @@ object Dependencies{
     object BuildPlugins {
         const val androidGradle = "com.android.tools.build:gradle:$androidGradleVersion"
         const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        val googleServices = "com.google.gms:google-services:$googleSrvcs"
     }
     object SupportLibs {
         val appcompat = "androidx.appcompat:appcompat:$appcompatVersion"
@@ -95,6 +104,13 @@ object Dependencies{
     }
     object Glide {
         val glide = "com.github.bumptech.glide:glide:$glideVersion"
+    }
+    object Firebase {
+        val firebaseFunctions = "com.google.firebase:firebase-functions:$firebaseFuncs"
+        val firebaseMessaging = "com.google.firebase:firebase-messaging:$firebaseMsg"
+    }
+    object GooglePlay {
+        val playServicesAds = "com.google.android.gms:play-services-ads:$playAds"
     }
 
     @JvmStatic
