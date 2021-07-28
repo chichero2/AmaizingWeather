@@ -65,6 +65,8 @@ dependencies {
     implementation(Dependencies.Room.room)
     implementation(Dependencies.Dagger.dagger)
     implementation(Dependencies.Glide.glide)
+    implementation(Dependencies.Firebase.firebaseFunctions)
+    implementation(Dependencies.GooglePlay.playServicesAds)
     kapt(Dependencies.Room.roomCompiler)
     kapt(Dependencies.Moxy.moxyCompiler)
     kapt(Dependencies.Dagger.daggerCompiler)

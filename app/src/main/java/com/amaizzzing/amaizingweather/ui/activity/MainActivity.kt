@@ -9,6 +9,7 @@ import com.amaizzzing.amaizingweather.mvp.view.MainView
 import com.amaizzzing.amaizingweather.ui.BackButtonListener
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.google.android.gms.ads.MobileAds
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import javax.inject.Inject
@@ -30,6 +31,8 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
 
         AmaizingWeatherApp.instance.appComponent.inject(this)
+
+        MobileAds.initialize(this) {}
     }
 
     override fun onResumeFragments() {
